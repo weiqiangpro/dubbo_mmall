@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubbo_user" />
+        <module name="dubbo_shipping" />
+        <module name="dubbo_cart" />
+        <module name="dubbo_order" />
+        <module name="dubbo_common" />
+        <module name="dubbo_category" />
+        <module name="dubbo_gateway" />
+        <module name="dubbo_product" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo_interface_response" target="1.8" />
+      <module name="dubbo_nacos" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dubbo_cart" options="-parameters" />
+      <module name="dubbo_category" options="-parameters" />
+      <module name="dubbo_common" options="-parameters" />
+      <module name="dubbo_gateway" options="-parameters" />
+      <module name="dubbo_interface_response" options="-parameters" />
+      <module name="dubbo_nacos" options="-parameters" />
+      <module name="dubbo_order" options="-parameters" />
+      <module name="dubbo_product" options="-parameters" />
+      <module name="dubbo_shipping" options="-parameters" />
+      <module name="dubbo_user" options="-parameters" />
+    </option>
+  </component>
+</project>

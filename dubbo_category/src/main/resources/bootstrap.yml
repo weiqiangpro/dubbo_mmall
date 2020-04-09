@@ -1,0 +1,25 @@
+server:
+  port: 7101
+#  servlet:
+#    context-path: /user
+
+spring:
+  application:
+    name: mmall-dubbo-category
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+dubbo:
+  application:
+    qos-enable: true
+    qos-accept-foreign-ip: false
+    qos-port: 33333
+  scan:
+    base-packages: com.wq.mmall.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: spring-cloud://localhost

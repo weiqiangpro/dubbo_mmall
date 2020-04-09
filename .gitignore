@@ -1,0 +1,9 @@
+# Project exclude paths
+/dubbo_cart/target/
+/dubbo_category/target/
+/dubbo_common/target/
+/dubbo_gateway/target/
+/dubbo_order/target/
+/dubbo_product/target/
+/dubbo_shipping/target/
+/dubbo_user/target/

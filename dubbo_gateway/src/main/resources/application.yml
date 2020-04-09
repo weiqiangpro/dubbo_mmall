@@ -1,0 +1,19 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: gateway-server
+dubbo:
+  monitor:
+    protocol: user
+  protocol:
+    name: dubbo
+    port: 20802
+  registry:
+    timeout: 5000
+    address: 127.0.0.1:8848
+    protocol: nacos
+  application:
+    qos-accept-foreign-ip: false
+    qos-enable: false
+    name: user
