@@ -19,6 +19,7 @@ import java.util.Optional;
 @RocketMQTransactionListener(txProducerGroup = "test_transaction")
 
 public class MQTransaction implements RocketMQLocalTransactionListener {
+
     @Autowired
     private RocketMQDao rocketMQDao;
 

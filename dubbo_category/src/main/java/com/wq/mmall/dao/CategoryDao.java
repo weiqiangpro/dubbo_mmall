@@ -10,6 +10,5 @@ import java.util.List;
  * Time: 2020/4/2 下午8:35
  */
 public interface CategoryDao extends JpaRepository<Category, Integer> {
-
     List<Category> findByParentId(Integer parentId);
 }

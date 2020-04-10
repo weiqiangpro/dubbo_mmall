@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RocketMQMessageListener(consumerGroup = "test-group", topic = "topic")
 public class MQ implements RocketMQListener<Arg> {
+
     @Override
     public void onMessage(Arg arg) {
         System.out.println(arg.getMes()+"___________________");
