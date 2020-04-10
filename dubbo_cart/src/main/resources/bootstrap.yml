@@ -7,6 +7,9 @@ spring:
   application:
     name: mmall-cart
   cloud:
+    alibaba:
+      seata:
+        tx-service-group: wq
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
@@ -21,3 +24,4 @@ dubbo:
   registry:
     address: spring-cloud://localhost
     check: false
+

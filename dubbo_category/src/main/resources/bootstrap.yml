@@ -27,3 +27,8 @@ management:
     web:
       exposure:
         include: '*'
+rocketmq:
+  name-server: 192.168.31.20:9876
+  producer:
+#    必须制定group
+    group: test-group

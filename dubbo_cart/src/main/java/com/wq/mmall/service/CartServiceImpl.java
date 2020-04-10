@@ -8,6 +8,7 @@ import com.wq.mmall.utils.BigDecimalUtil;
 import com.wq.mmall.utils.Const;
 import com.wq.mmall.vo.CartProductResponse;
 import com.wq.mmall.vo.CartResponse;
+import io.seata.spring.annotation.GlobalTransactional;
 import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -31,7 +32,7 @@ import java.util.Optional;
  */
 @Service
 @Slf4j
-@Transactional(rollbackFor = {RpcException.class,MmallException.class})
+//@Transactional(rollbackFor = {RpcException.class,MmallException.class})
 public class CartServiceImpl implements ICartService {
 
 
@@ -54,7 +55,7 @@ public class CartServiceImpl implements ICartService {
         return "添加成功";
 
     }
-    @Transactional
+    @Transactional(rollbackFor = {RpcException.class,MmallException.class})
     public String deleteProduct(Integer userId, Integer productId) throws MmallException {
         if (cartDao.deleteByUserIdAndProductId(userId, productId) <= 0)
             throw new MmallException("删除物品失败");

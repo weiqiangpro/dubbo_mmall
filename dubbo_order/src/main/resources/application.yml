@@ -12,17 +12,18 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mmall?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123
-    type: com.zaxxer.hikari.HikariDataSource
+#    type: com.zaxxer.hikari.HikariDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 连接池
-    hikari:
-      maximum-pool-size: 8
-      minimum-idle: 4
-      idle-timeout: 30000
-      connection-timeout: 30000
-      max-lifetime: 45000
-      auto-commit: true
-      pool-name: ImoocCouponHikariCP
+#    hikari:
+#      maximum-pool-size: 8
+#      minimum-idle: 4
+#      idle-timeout: 30000
+#      connection-timeout: 30000
+#      max-lifetime: 45000
+#      auto-commit: true
+#      pool-name: ImoocCouponHikariCP
   redis:
     database: 0
     host: 127.0.0.1

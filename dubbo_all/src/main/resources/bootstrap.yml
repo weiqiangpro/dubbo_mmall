@@ -1,19 +1,16 @@
 server:
-  port: 7501
+  port: 8888
 #  servlet:
 #    context-path: /user
 
 spring:
   application:
-    name: mmall-order
-
+    name: mmall-doc
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-    alibaba:
-      seata:
-        tx-service-group: wq
+#        server-addr: 192.168.31.92:8848
 
 dubbo:
   scan:

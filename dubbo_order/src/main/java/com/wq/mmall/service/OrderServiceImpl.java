@@ -13,9 +13,9 @@ import com.wq.mmall.vo.OrderItemVo;
 import com.wq.mmall.vo.OrderProductVo;
 import com.wq.mmall.vo.OrderVo;
 import com.wq.mmall.vo.ShippingVo;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcException;
@@ -37,7 +37,7 @@ import java.util.*;
 
 @Service
 @Slf4j
-@Transactional(rollbackFor = {RpcException.class,MmallException.class})
+//@Transactional(rollbackFor = {RpcException.class,MmallException.class})
 public class OrderServiceImpl implements IOrderService {
 
     private final OrderDao orderDao;
@@ -55,7 +55,9 @@ public class OrderServiceImpl implements IOrderService {
         this.orderItemDao = orderItemDao;
     }
 
+
     @Override
+    @GlobalTransactional(name = "order",rollbackFor = MmallException.class)
     public OrderVo createOrder(Integer userId, Integer shippingId) throws MmallException {
 
         //从购物车中获取数据
@@ -81,7 +83,9 @@ public class OrderServiceImpl implements IOrderService {
         this.reduceProductStock(orderItemList);
         //清空一下购物车
         this.cleanCart(cartList);
-        return assembleOrderVo(order, orderItemList);
+
+        throw new MmallException("aaa");
+//        return assembleOrderVo(order, orderItemList);
     }
 
 
