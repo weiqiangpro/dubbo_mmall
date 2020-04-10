@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Created by weiqiang
@@ -31,7 +33,7 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     public UserServiceImpl(UserDao userDao, StringRedisTemplate redis) {
         this.userDao = userDao;
-//        this.redis = redis;
+        this.redis = redis;
     }
 
     @Override
@@ -56,7 +58,7 @@ public class UserServiceImpl implements IUserService {
             e.printStackTrace();
         }
 
-//        redis.opsForValue().set(token, json, 30, TimeUnit.MINUTES);
+        redis.opsForValue().set(token, json, 30, TimeUnit.MINUTES);
         return  new LoginSuccessResponse("登陆成功", token);
     }
 

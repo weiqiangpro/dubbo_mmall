@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: mmall-dubbo-cart
+    name: mmall-cart
   cloud:
     nacos:
       discovery:

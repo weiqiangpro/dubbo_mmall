@@ -30,9 +30,9 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Restful形式获取商品详细信息")
-    @ApiImplicitParam(name = "productId", value = "商品id", required = true, paramType = "path", dataType = "int")
-    @GetMapping("/{productId}")
-    public ProductDetailResponse detailRESTful(@PathVariable Integer productId) throws MmallException {
+    @ApiImplicitParam(name = "productId", value = "商品id", required = true, dataType = "int")
+    @GetMapping("/detail")
+    public ProductDetailResponse detailRESTful(@RequestParam("productId") Integer productId) throws MmallException {
         return iProductService.getProductDetail(productId);
     }
 

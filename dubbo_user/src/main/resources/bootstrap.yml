@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: mmall-dubbo-user
+    name: mmall-user
   cloud:
     nacos:
       discovery:

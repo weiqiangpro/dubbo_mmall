@@ -1,19 +1,60 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
 server:
   port: 8001
 spring:
   application:
-    name: gateway-server
-dubbo:
-  monitor:
-    protocol: user
-  protocol:
-    name: dubbo
-    port: 20802
-  registry:
-    timeout: 5000
-    address: 127.0.0.1:8848
-    protocol: nacos
-  application:
-    qos-accept-foreign-ip: false
-    qos-enable: false
-    name: user
+    name: mmall-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: http://cxytiandi.com
+          predicates:
+            - Path=/course
+
+        - id: category_route
+          uri: lb://mmall-category
+          predicates:
+            # 当且仅当访问路径是/users/*或者/some-path/**，才会转发用户微服务
+            # segment是一个特殊的占位符，单层路径匹配
+            # eg. 访问http://localhost:8040/users/1 -> user-center/users/1
+            - Path=/category/**
+
+        - id: product_route
+          uri: lb://mmall-product
+          predicates:
+            - Path=/product/**
+
+        - id: user_route
+          uri: lb://mmall-user
+          predicates:
+            - Path=/user/**
+
+        - id: cart_route
+          uri: lb://mmall-cart
+          predicates:
+            - Path=/cart/**
+
+        - id: shipping_route
+          uri: lb://mmall-shipping
+          predicates:
+            - Path=/shipping/**
+
+        - id: order_route
+          uri: lb://mmall-product
+          predicates:
+            - Path=/order/**
+      discovery:
+        locator:
+          enabled: true
+    nacos:
+      discovery:
+        server-addr: localhost:8848

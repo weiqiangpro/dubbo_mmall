@@ -4,6 +4,7 @@ import com.wq.mmall.annotation.ResponseAdvice;
 import com.wq.mmall.exception.MmallException;
 import com.wq.mmall.service.ICartService;
 import com.wq.mmall.utils.Const;
+import com.wq.mmall.utils.UserToken;
 import com.wq.mmall.vo.CartResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -23,11 +24,10 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/cart/")
 @ResponseAdvice
 public class CartController {
-
     private final ICartService iCartService;
 
     @Autowired
-    public CartController(ICartService iCartService) {
+    public CartController(UserToken userToken, ICartService iCartService) {
         this.iCartService = iCartService;
     }
 
@@ -38,7 +38,8 @@ public class CartController {
             @ApiImplicitParam(name = "pageSize", value = "每页数据的数量", dataType = "int"),
     })
     @ApiOperation("获取当前购物车商品")
-    public CartResponse list(@RequestParam("userId") Integer userId,
+    public CartResponse list(
+            @RequestParam("userId") Integer userId,
                              @RequestParam(value = "pageNum", defaultValue = "0") int pageNum,
                              @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
                              HttpServletRequest request) throws MmallException {

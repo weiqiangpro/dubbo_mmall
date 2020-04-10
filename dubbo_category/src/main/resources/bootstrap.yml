@@ -5,17 +5,16 @@ server:
 
 spring:
   application:
-    name: mmall-dubbo-category
+    name: mmall-category
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
 
 dubbo:
-  application:
-    qos-enable: true
-    qos-accept-foreign-ip: false
-    qos-port: 33333
   scan:
     base-packages: com.wq.mmall.service
   protocol:
@@ -23,3 +22,8 @@ dubbo:
     port: -1
   registry:
     address: spring-cloud://localhost
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

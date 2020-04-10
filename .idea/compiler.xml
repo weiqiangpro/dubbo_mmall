@@ -8,9 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dubbo_user" />
         <module name="dubbo_shipping" />
-        <module name="dubbo_cart" />
         <module name="dubbo_order" />
         <module name="dubbo_common" />
+        <module name="dubbo_cart" />
         <module name="dubbo_category" />
         <module name="dubbo_gateway" />
         <module name="dubbo_product" />

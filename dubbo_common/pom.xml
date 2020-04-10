@@ -94,7 +94,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-dubbo</artifactId>
-
         </dependency>
     </dependencies>
 </project>
